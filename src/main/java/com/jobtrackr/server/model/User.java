@@ -1,4 +1,4 @@
-package com.example.jobtrackr.model;
+package com.jobtrackr.server.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
