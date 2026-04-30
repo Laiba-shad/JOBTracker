@@ -5,6 +5,7 @@ import com.jobtrackr.server.dto.response.JobResponse;
 import com.jobtrackr.server.service.JobService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,11 +21,12 @@ public class JobController {
     }
     //create, update, delete, get/read
     @PostMapping("/{userId}")
-    public ResponseEntity<JobResponse> createJob(@RequestBody JobRequest jobRequest, @PathVariable Long userId) {
+    @PreAuthorize("@authorizationService.isVerified(authentication)")
+    public ResponseEntity<JobResponse> createJob(@RequestBody JobRequest jobRequest,
+                                                 @PathVariable Long userId) {
         JobResponse response = jobService.saveJob(jobRequest, userId);
-        System.out.print("response print in controller + response" + response);
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
-}
+    }
 @GetMapping("/{id}")
     public ResponseEntity<JobResponse> getJob(@PathVariable Long id){
     JobResponse response = jobService.getJobById(id);

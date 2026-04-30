@@ -20,6 +20,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableWebSecurity
 @EnableMethodSecurity  // Optional for @PreAuthorize
 public class WebSecurityConfig {
+    //SecurityConfig (permit auth endpoints, protect rest)
     @Autowired
     private JwtAuthenticiationFilter jwtFilter;  // Inject your filter
 

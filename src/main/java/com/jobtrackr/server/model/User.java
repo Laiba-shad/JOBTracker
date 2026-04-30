@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import jakarta.persistence.Id;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.sql.Timestamp;
 
@@ -23,8 +24,12 @@ public class User {
     private String email;
     @Column(nullable = false)
     private String password;
+    @Column(nullable = false)
+    private boolean isVerified = false;
+    @Column(nullable = false)
+    private String role = "ROLE_USER";
     @CreationTimestamp
     private Timestamp createdAt;
-    @CreationTimestamp
+    @UpdateTimestamp
     private Timestamp updatedAt;
 }
