@@ -1,4 +1,4 @@
-# JOBTrackr -  Job Application Tracker
+# JOBTracker -  Job Application Tracker
 
 ## Project Overview
 
